@@ -10,6 +10,6 @@ spoonacular recipe and food API.
 API might now always work due to daily limit
 
 Can be filtered by:
--Cuisine
--Intolerances
--Diet
+* Cuisine
+* Intolerances
+* Diet
