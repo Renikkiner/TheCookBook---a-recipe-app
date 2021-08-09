@@ -6,8 +6,14 @@ import { useGlobalContext } from '../../context'
 import { Container, Input, InputArea, Icon } from './SearchBarStyles'
 
 const SearchRecipe = () => {
-  const { setQuery, setNumber, setFilterName, setFilter } = useGlobalContext()
-  const [search, setSearch] = useState('')
+  const {
+    setQuery,
+    inputText,
+    setInputText,
+    setNumber,
+    setFilterName,
+    setFilter,
+  } = useGlobalContext()
 
   const debouncedSearch = useMemo(
     () => _.debounce((val) => setQuery(val), 500),
@@ -18,7 +24,7 @@ const SearchRecipe = () => {
     (e) => {
       setFilterName('')
       setFilter('')
-      setSearch(e.target.value)
+      setInputText(e.target.value)
       debouncedSearch(e.target.value)
       setNumber(12)
     },
@@ -33,7 +39,7 @@ const SearchRecipe = () => {
           type="text"
           placeholder="Search Recipes.."
           onChange={handleChange}
-          value={search}
+          value={inputText}
         />
       </InputArea>
     </Container>

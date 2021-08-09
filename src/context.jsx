@@ -6,6 +6,7 @@ const AppContext = React.createContext()
 
 const AppProvider = ({ children }) => {
   const [query, setQuery] = useState('')
+  const [inputText, setInputText] = useState('')
   const [toggleOn, setToggleOn] = useState(false)
   const {
     isLoading,
@@ -34,6 +35,8 @@ const AppProvider = ({ children }) => {
         recipes,
         query,
         setQuery,
+        inputText,
+        setInputText,
         numberOfResults,
         toggleOn,
         setToggleOn,

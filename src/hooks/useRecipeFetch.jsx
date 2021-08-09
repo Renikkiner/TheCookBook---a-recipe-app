@@ -13,7 +13,6 @@ export const useRecipeFetch = (recipeId) => {
       const data = await response.json()
       if (data.title !== undefined) {
         setState(data)
-        console.log(data)
         setError({ show: false, msg: '' })
       } else {
         setError({ show: true, msg: data.message })

@@ -13,7 +13,9 @@ const RecipeList = () => {
   return (
     <>
       <Container>
-        {recipes.length === 0 && <Message>Sorry, no matches found..</Message>}
+        {recipes && recipes.length === 0 && (
+          <Message>Sorry, no matches found..</Message>
+        )}
         {recipes ? (
           recipes.map((item) => <Recipe key={item.id} {...item} />)
         ) : (

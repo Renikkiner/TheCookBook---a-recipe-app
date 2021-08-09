@@ -19,8 +19,14 @@ import {
 import { FaBars } from 'react-icons/fa'
 
 const NavBar = () => {
-  const { setQuery, toggleOn, setToggleOn, setFilterName, setFilter } =
-    useGlobalContext()
+  const {
+    setQuery,
+    toggleOn,
+    setToggleOn,
+    setInputText,
+    setFilterName,
+    setFilter,
+  } = useGlobalContext()
   const [isShadow, setIsShadow] = useState(false)
 
   //navbar shadow
@@ -43,6 +49,7 @@ const NavBar = () => {
     setQuery('')
     setFilterName('')
     setFilter('')
+    setInputText('')
   }
 
   return (

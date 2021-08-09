@@ -38,7 +38,6 @@ const useFetch = (urlParams) => {
       if (data.results !== undefined) {
         setNumberOfResults(data.totalResults)
         setData(data.results)
-        console.log(data)
         setError({ show: false, msg: '' })
       } else {
         setError({ show: true, msg: data.message })
