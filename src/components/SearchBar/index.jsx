@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from 'react'
+import React, { useMemo, useCallback } from 'react'
 import _ from 'lodash'
 //context
 import { useGlobalContext } from '../../context'
