@@ -95,7 +95,8 @@ export const CategoryElements = styled.div`
 `
 
 export const CategoryButton = styled(Link)`
-  color: var(--yellow);
+  color: ${({ active }) =>
+    active === 'active' ? 'var(--cream)' : 'var(--yellow)'};
   font-size: var(--fontMed);
   font-family: var(--oswald);
   font-weight: 700;

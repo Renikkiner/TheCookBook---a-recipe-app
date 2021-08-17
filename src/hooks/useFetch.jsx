@@ -9,8 +9,9 @@ const useFetch = (urlParams) => {
   const [data, setData] = useState(null)
   const [number, setNumber] = useState(12)
   const [numberOfResults, setNumberOfResults] = useState(0)
-  const [filterName, setFilterName] = useState('')
-  const [filter, setFilter] = useState('')
+  const [cuisine, setCuisine] = useState('')
+  const [intolerances, setIntolerances] = useState([])
+  const [diet, setDiet] = useState('')
 
   const fetchRecipes = async (url) => {
     setIsLoading(true)
@@ -49,15 +50,17 @@ const useFetch = (urlParams) => {
   }
 
   useEffect(() => {
-    //at first it might seem like nothing has changed with filter, but surprisingly it's just many of these recipes are vege, gluten-free etc.
-    const url = `${BASE_URL}&query=${urlParams}&number=${number}`
-    const filterUrl = `&${filterName}=${filter}`
+    const intolerancesURL = `&intolerances=${intolerances.join(',')}`
+    const dietURL = `&diet=${diet}`
+    const cuisineURL = `&cuisine=${cuisine}`
+    const url = `${BASE_URL}&query=${urlParams}&number=${number}${
+      intolerances && intolerancesURL
+    }${diet && dietURL}${cuisine && cuisineURL}`
     if (number > 12) {
-      return fetchMoreRecipes(`${url}${filterName && filterUrl}`)
+      return fetchMoreRecipes(`${url}`)
     }
-
-    fetchRecipes(`${url}${filterName && filterUrl}`)
-  }, [urlParams, number, filterName, filter])
+    fetchRecipes(`${url}`)
+  }, [urlParams, number, intolerances, cuisine, diet])
 
   return {
     isLoading,
@@ -69,8 +72,12 @@ const useFetch = (urlParams) => {
     setIsLoading,
     isLoadingMore,
     setIsLoadingMore,
-    setFilterName,
-    setFilter,
+    cuisine,
+    setCuisine,
+    intolerances,
+    setIntolerances,
+    diet,
+    setDiet,
   }
 }
 

@@ -24,8 +24,12 @@ const NavBar = () => {
     toggleOn,
     setToggleOn,
     setInputText,
-    setFilterName,
-    setFilter,
+    cuisine,
+    setCuisine,
+    intolerances,
+    setIntolerances,
+    diet,
+    setDiet,
   } = useGlobalContext()
   const [isShadow, setIsShadow] = useState(false)
 
@@ -40,15 +44,34 @@ const NavBar = () => {
 
   //handle recipe filter
   const handleRecipeFilter = (e) => {
-    setFilterName(e.target.parentElement.id.toLowerCase())
-    setFilter(e.target.innerText.toLowerCase())
+    const parent = e.target.parentElement.id.toLowerCase()
+    const child = e.target.innerText.toLowerCase()
+    //if cuisine
+    if (parent === 'cuisine') {
+      if (cuisine === child) return
+      if (child === 'none') return setCuisine('')
+      setCuisine(child)
+    }
+    //if intolerances
+    if (parent === 'intolerances' && intolerances.indexOf(child) === -1) {
+      setIntolerances([...intolerances, child])
+    } else {
+      setIntolerances(intolerances.filter((i) => i !== child))
+    }
+    //if diet
+    if (parent === 'diet') {
+      if (diet === child) return
+      if (child === 'none') return setDiet('')
+      setDiet(child)
+    }
   }
 
   //refresh the site once you click logo
   const handleRefresh = () => {
     setQuery('')
-    setFilterName('')
-    setFilter('')
+    setCuisine('')
+    setIntolerances([])
+    setDiet('')
     setInputText('')
   }
 
@@ -71,12 +94,19 @@ const NavBar = () => {
           {menuData.map((item) => (
             <CategoryElements id={item.title} key={item.title}>
               <h1>{item.title}</h1>
-              {item.content.map((item) => (
+              {item.content.map((i) => (
                 <CategoryButton
-                  key={item.title}
+                  key={i}
+                  active={
+                    intolerances.includes(i.toLowerCase()) ||
+                    cuisine === i.toLowerCase() ||
+                    diet === i.toLowerCase()
+                      ? 'active'
+                      : undefined
+                  }
                   to="/"
                   onClick={(e) => handleRecipeFilter(e)}>
-                  {item.title}
+                  {i}
                 </CategoryButton>
               ))}
             </CategoryElements>

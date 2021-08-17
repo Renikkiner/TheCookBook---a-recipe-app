@@ -6,14 +6,7 @@ import { useGlobalContext } from '../../context'
 import { Container, Input, InputArea, Icon } from './SearchBarStyles'
 
 const SearchRecipe = () => {
-  const {
-    setQuery,
-    inputText,
-    setInputText,
-    setNumber,
-    setFilterName,
-    setFilter,
-  } = useGlobalContext()
+  const { setQuery, inputText, setInputText, setNumber } = useGlobalContext()
 
   const debouncedSearch = useMemo(
     () => _.debounce((val) => setQuery(val), 500),
@@ -22,13 +15,11 @@ const SearchRecipe = () => {
 
   const handleChange = useCallback(
     (e) => {
-      setFilterName('')
-      setFilter('')
       setInputText(e.target.value)
       debouncedSearch(e.target.value)
       setNumber(12)
     },
-    [debouncedSearch, setNumber, setFilter, setFilterName]
+    [debouncedSearch, setNumber, setInputText]
   )
 
   return (

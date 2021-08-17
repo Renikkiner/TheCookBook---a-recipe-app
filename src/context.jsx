@@ -18,8 +18,12 @@ const AppProvider = ({ children }) => {
     setNumber,
     data: recipes,
     numberOfResults,
-    setFilterName,
-    setFilter,
+    cuisine,
+    setCuisine,
+    intolerances,
+    setIntolerances,
+    diet,
+    setDiet,
   } = useFetch(query)
 
   return (
@@ -40,8 +44,12 @@ const AppProvider = ({ children }) => {
         numberOfResults,
         toggleOn,
         setToggleOn,
-        setFilterName,
-        setFilter,
+        cuisine,
+        setCuisine,
+        intolerances,
+        setIntolerances,
+        diet,
+        setDiet,
       }}>
       {children}
     </AppContext.Provider>

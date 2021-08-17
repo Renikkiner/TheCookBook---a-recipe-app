@@ -2,30 +2,21 @@ export const menuData = [
   {
     title: 'Cuisine',
     content: [
-      { title: 'African', url: 'african' },
-      { title: 'American', url: 'american' },
-      { title: 'European', url: 'european' },
-      { title: 'Indian', url: 'indian' },
-      { title: 'Japanese', url: 'japanese' },
-      { title: 'Mexican', url: 'mexican' },
+      'None',
+      'African',
+      'American',
+      'European',
+      'Indian',
+      'Japanese',
+      'Mexican',
     ],
   },
   {
     title: 'Intolerances',
-    content: [
-      { title: 'Dairy', url: 'dairy' },
-      { title: 'Gluten', url: 'gluten' },
-      { title: 'Peanut', url: 'peanut' },
-      { title: 'Soy', url: 'soy' },
-    ],
+    content: ['Dairy', 'Gluten', 'Peanut', 'Soy'],
   },
   {
     title: 'Diet',
-    content: [
-      { title: 'Ketogenic', url: 'ketogenic' },
-      { title: 'Paleo', url: 'gluten' },
-      { title: 'Vegetarian', url: 'vegetarian' },
-      { title: 'Vegan', url: 'vegan' },
-    ],
+    content: ['None', 'Ketogenic', 'Paleo', 'Vegetarian', 'Vegan'],
   },
 ]
